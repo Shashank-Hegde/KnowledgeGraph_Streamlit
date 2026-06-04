@@ -60,14 +60,23 @@ class RemoteLLMExtractor:
             self.auth = (auth_user, auth_password)
         self.timeout = timeout
         self._available = None
+        # Required for ngrok tunnels — without this, ngrok returns an HTML interstitial
+        self.headers = {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true",
+        }
 
     def is_available(self):
         """Check if the remote Ollama is reachable."""
-        if self._available is not None:
-            return self._available
+        # Don't cache indefinitely — recheck every call in case ngrok restarted
         try:
             test_url = self.url.replace("/api/generate", "/api/tags")
-            resp = requests.get(test_url, auth=self.auth, timeout=5)
+            resp = requests.get(
+                test_url,
+                auth=self.auth,
+                headers=self.headers,
+                timeout=5,
+            )
             self._available = resp.status_code == 200
         except Exception:
             self._available = False
@@ -115,7 +124,9 @@ class RemoteLLMExtractor:
 
             resp = requests.post(
                 self.url, json=payload,
-                auth=self.auth, timeout=self.timeout
+                auth=self.auth,
+                headers=self.headers,
+                timeout=self.timeout,
             )
             elapsed = time.time() - start
 

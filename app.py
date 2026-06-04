@@ -357,8 +357,9 @@ def render_doctor_review(spreader, graph, gh, questions_log):
 
         if st.button("Submit Confirmation", type="primary"):
             feedback = _apply_confirm(spreader, graph, top[0][0], conf_val)
-            _push_feedback(feedback, spreader, graph, gh, questions_log)
-            st.success("✅ Feedback submitted! Weights updated and pushed to GitHub.")
+            ok, msg = _push_feedback(feedback, spreader, graph, gh, questions_log)
+            st.success(msg) if ok else st.warning(msg)
+            render_weight_changes(feedback)
 
     elif "Correct" in feedback_type:
         # Show all conditions grouped by department
@@ -381,8 +382,9 @@ def render_doctor_review(spreader, graph, gh, questions_log):
         if st.button("Submit Correction", type="primary"):
             correct_cond = options[selected]
             feedback = _apply_correct(spreader, graph, correct_cond, top[0][0], conf_val)
-            _push_feedback(feedback, spreader, graph, gh, questions_log)
-            st.success("✅ Correction submitted! Weights adjusted and pushed to GitHub.")
+            ok, msg = _push_feedback(feedback, spreader, graph, gh, questions_log)
+            st.success(msg) if ok else st.warning(msg)
+            render_weight_changes(feedback)
 
     elif "Rerank" in feedback_type:
         rerank_options = {}
@@ -395,36 +397,52 @@ def render_doctor_review(spreader, graph, gh, questions_log):
         if st.button("Submit Rerank", type="primary"):
             correct_cond = rerank_options[selected]
             feedback = _apply_rerank(spreader, graph, correct_cond)
-            _push_feedback(feedback, spreader, graph, gh, questions_log)
-            st.success("✅ Rerank submitted!")
+            ok, msg = _push_feedback(feedback, spreader, graph, gh, questions_log)
+            st.success(msg) if ok else st.warning(msg)
+            render_weight_changes(feedback)
 
 
 def _apply_confirm(spreader, graph, correct_cond, confidence):
-    """Apply confirm feedback to weights."""
+    """Apply confirm feedback to weights. Returns detail list."""
     lr = 0.02
     changes = []
-    for sym in spreader.active_symptoms:
+    for sym in sorted(spreader.active_symptoms):
         edges = graph.edges.get(sym, [])
         for i, (cond, weight) in enumerate(edges):
             if cond == correct_cond:
                 new_w = min(0.99, weight + lr * confidence)
                 edges[i] = (cond, round(new_w, 4))
-                changes.append({"sym": sym, "cond": cond, "old": weight, "new": new_w})
-    return {"type": "confirm", "correct": correct_cond, "confidence": confidence, "changes": len(changes)}
+                changes.append({
+                    "action": "strengthen",
+                    "symptom": sym,
+                    "condition": graph.conditions.get(cond, {}).get("display", cond),
+                    "old": round(weight, 4),
+                    "new": round(new_w, 4),
+                    "delta": round(new_w - weight, 4),
+                })
+    return {"type": "confirm", "correct": correct_cond, "confidence": confidence,
+            "num_changes": len(changes), "changes": changes}
 
 
 def _apply_correct(spreader, graph, correct_cond, wrong_cond, confidence):
-    """Apply correction feedback to weights."""
+    """Apply correction feedback to weights. Returns detail list."""
     lr = 0.02
     changes = []
-    for sym in spreader.active_symptoms:
+    for sym in sorted(spreader.active_symptoms):
         edges = graph.edges.get(sym, [])
         # Weaken wrong
         for i, (cond, weight) in enumerate(edges):
             if cond == wrong_cond:
                 new_w = max(0.05, weight - lr * confidence * 0.5)
                 edges[i] = (cond, round(new_w, 4))
-                changes.append({"sym": sym, "cond": cond, "old": weight, "new": new_w, "action": "weaken"})
+                changes.append({
+                    "action": "weaken",
+                    "symptom": sym,
+                    "condition": graph.conditions.get(cond, {}).get("display", cond),
+                    "old": round(weight, 4),
+                    "new": round(new_w, 4),
+                    "delta": round(new_w - weight, 4),
+                })
         # Strengthen correct
         found = False
         for i, (cond, weight) in enumerate(edges):
@@ -432,40 +450,106 @@ def _apply_correct(spreader, graph, correct_cond, wrong_cond, confidence):
                 found = True
                 new_w = min(0.99, weight + lr * confidence)
                 edges[i] = (cond, round(new_w, 4))
-                changes.append({"sym": sym, "cond": cond, "old": weight, "new": new_w, "action": "strengthen"})
+                changes.append({
+                    "action": "strengthen",
+                    "symptom": sym,
+                    "condition": graph.conditions.get(cond, {}).get("display", cond),
+                    "old": round(weight, 4),
+                    "new": round(new_w, 4),
+                    "delta": round(new_w - weight, 4),
+                })
         if not found:
             edges.append((correct_cond, 0.15))
-            changes.append({"sym": sym, "cond": correct_cond, "old": 0, "new": 0.15, "action": "create"})
-    return {"type": "correct", "correct": correct_cond, "wrong": wrong_cond, "changes": len(changes)}
+            changes.append({
+                "action": "new_edge",
+                "symptom": sym,
+                "condition": graph.conditions.get(correct_cond, {}).get("display", correct_cond),
+                "old": 0.0,
+                "new": 0.15,
+                "delta": 0.15,
+            })
+    return {"type": "correct", "correct": correct_cond, "wrong": wrong_cond,
+            "num_changes": len(changes), "changes": changes}
 
 
 def _apply_rerank(spreader, graph, correct_cond):
-    """Apply rerank feedback."""
+    """Apply rerank feedback. Returns detail list."""
     lr = 0.01
-    for sym in spreader.active_symptoms:
+    changes = []
+    for sym in sorted(spreader.active_symptoms):
         edges = graph.edges.get(sym, [])
         for i, (cond, weight) in enumerate(edges):
             if cond == correct_cond:
                 new_w = min(0.99, weight + lr)
                 edges[i] = (cond, round(new_w, 4))
-    return {"type": "rerank", "correct": correct_cond, "changes": len(spreader.active_symptoms)}
+                changes.append({
+                    "action": "strengthen",
+                    "symptom": sym,
+                    "condition": graph.conditions.get(cond, {}).get("display", cond),
+                    "old": round(weight, 4),
+                    "new": round(new_w, 4),
+                    "delta": round(new_w - weight, 4),
+                })
+    return {"type": "rerank", "correct": correct_cond,
+            "num_changes": len(changes), "changes": changes}
 
 
 def _push_feedback(feedback, spreader, graph, gh, questions_log):
-    """Push feedback to GitHub."""
-    if gh is None:
-        return
-
+    """Push feedback to GitHub. Returns (ok, message)."""
     feedback_entry = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "feedback": feedback,
+        "feedback": {k: v for k, v in feedback.items() if k != "changes"},
         "active_symptoms": sorted(list(spreader.active_symptoms)),
         "denied_symptoms": sorted(list(spreader.negative_symptoms)),
         "questions_asked": questions_log,
     }
 
-    save_weights(graph, gh, session_info=feedback.get("type", ""))
-    save_feedback_to_github(gh, feedback_entry)
+    if gh is None:
+        return False, "GitHub not configured — weights updated in memory only."
+
+    w_ok = save_weights(graph, gh, session_info=feedback.get("type", ""))
+    f_ok = save_feedback_to_github(gh, feedback_entry)
+
+    if w_ok and f_ok:
+        return True, "✅ Pushed to GitHub successfully."
+    elif w_ok:
+        return True, "⚠️ Weights pushed. Feedback log push failed."
+    else:
+        return False, "❌ GitHub push failed. Weights updated in memory only."
+
+
+def render_weight_changes(feedback):
+    """Display the exact weight changes from a feedback action."""
+    changes = feedback.get("changes", [])
+    if not changes:
+        st.info("No edge weights affected — no active symptoms connected to that condition.")
+        return
+
+    st.markdown("#### ⚖️ Weight Changes")
+    st.caption("Type: **%s** | Edges adjusted: **%d**" % (
+        feedback.get("type", "?").upper(), len(changes)))
+
+    strengthened = [c for c in changes if c["action"] == "strengthen"]
+    weakened = [c for c in changes if c["action"] == "weaken"]
+    new_edges = [c for c in changes if c["action"] == "new_edge"]
+
+    if strengthened:
+        with st.expander("▲ Strengthened (%d edges)" % len(strengthened), expanded=True):
+            for c in strengthened:
+                st.markdown("- `%s` → **%s**: %.4f → %.4f (+%.4f)" % (
+                    c["symptom"], c["condition"], c["old"], c["new"], c["delta"]))
+
+    if weakened:
+        with st.expander("▼ Weakened (%d edges)" % len(weakened), expanded=True):
+            for c in weakened:
+                st.markdown("- `%s` → **%s**: %.4f → %.4f (%.4f)" % (
+                    c["symptom"], c["condition"], c["old"], c["new"], c["delta"]))
+
+    if new_edges:
+        with st.expander("✨ New edges created (%d)" % len(new_edges), expanded=True):
+            for c in new_edges:
+                st.markdown("- `%s` → **%s**: 0.0000 → 0.1500 (new)" % (
+                    c["symptom"], c["condition"]))
 
 
 # ═══════════════════════════════════════════════
