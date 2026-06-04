@@ -1066,5 +1066,34 @@
         }
       ]
     }
+  },
+  {
+    "timestamp": "2026-06-04 09:46:33",
+    "feedback": {
+      "type": "correct",
+      "correct": "COPD",
+      "wrong": "malaria",
+      "changes": 6
+    },
+    "active_symptoms": [
+      "body_pain",
+      "chills",
+      "fever"
+    ],
+    "denied_symptoms": [],
+    "questions_asked": [
+      {
+        "id": "Q004",
+        "text": "Are you experiencing body pain or muscle aches?",
+        "response": "yes",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q003",
+        "text": "Do you have chills or shivering along with the fever?",
+        "response": "sometimes",
+        "parse_method": "fast"
+      }
+    ]
   }
 ]
