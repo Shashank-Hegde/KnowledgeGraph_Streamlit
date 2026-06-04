@@ -1255,5 +1255,84 @@
         "parse_method": "fast"
       }
     ]
+  },
+  {
+    "timestamp": "2026-06-04 11:28:33",
+    "feedback": {
+      "type": "correct",
+      "correct": "eczema",
+      "wrong": "influenza",
+      "num_changes": 12
+    },
+    "active_symptoms": [
+      "body_pain",
+      "cold",
+      "cough",
+      "fever",
+      "headache",
+      "productive_cough",
+      "sore_throat"
+    ],
+    "denied_symptoms": [
+      "chills",
+      "contact_history",
+      "travel_history"
+    ],
+    "questions_asked": [
+      {
+        "id": "Q003",
+        "text": "Do you have chills or shivering along with the fever?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q006",
+        "text": "Do you have a headache? If yes, where exactly?",
+        "response": "yes it is in the front part",
+        "parse_method": "llm"
+      },
+      {
+        "id": "Q007",
+        "text": "Have you traveled to a different region in the last 2 weeks?",
+        "response": "no I have no",
+        "parse_method": "llm"
+      },
+      {
+        "id": "Q008",
+        "text": "Is anyone else at home or work also sick with similar symptoms?",
+        "response": "not that I know of",
+        "parse_method": "llm"
+      },
+      {
+        "id": "Q108",
+        "text": "Is the cough dry or producing mucus/phlegm?",
+        "response": "it is wih phlegm",
+        "parse_method": "llm"
+      },
+      {
+        "id": "Q002",
+        "text": "Is the fever continuous, or does it come and go?",
+        "response": "it is continuous",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q021",
+        "text": "Do you have a sore throat or pain when swallowing?",
+        "response": "only sometimes",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q022",
+        "text": "Is your nose blocked or runny?",
+        "response": "it is blocked",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q069",
+        "text": "Do you frequently sneeze, especially in mornings or around dust?",
+        "response": "sneeze",
+        "parse_method": "fast"
+      }
+    ]
   }
 ]
