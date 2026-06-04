@@ -312,7 +312,7 @@
     ],
     [
       "dengue",
-      0.35
+      0.36
     ],
     [
       "malaria",
@@ -394,7 +394,7 @@
     ],
     [
       "dengue",
-      0.7
+      0.71
     ],
     [
       "typhoid",
@@ -432,7 +432,7 @@
     ],
     [
       "dengue",
-      0.55
+      0.56
     ],
     [
       "typhoid",
@@ -476,7 +476,7 @@
     ],
     [
       "dengue",
-      0.65
+      0.66
     ],
     [
       "malaria",
@@ -1265,6 +1265,132 @@
     [
       "MI",
       0.35
+    ]
+  ],
+  "inhaler_use": [
+    [
+      "bronchial_asthma",
+      0.75
+    ],
+    [
+      "COPD",
+      0.5
+    ]
+  ],
+  "steroid_use": [
+    [
+      "bronchial_asthma",
+      0.45
+    ],
+    [
+      "rheumatoid_arthritis",
+      0.3
+    ]
+  ],
+  "antacid_use": [
+    [
+      "GERD",
+      0.55
+    ],
+    [
+      "peptic_ulcer",
+      0.45
+    ]
+  ],
+  "antihistamine_use": [
+    [
+      "allergic_rhinitis",
+      0.5
+    ],
+    [
+      "urticaria",
+      0.4
+    ]
+  ],
+  "beta_blocker_use": [
+    [
+      "angina",
+      0.4
+    ],
+    [
+      "cardiac_arrhythmia",
+      0.35
+    ]
+  ],
+  "antihypertensive_use": [
+    [
+      "angina",
+      0.3
+    ],
+    [
+      "cholesterol_high",
+      0.25
+    ]
+  ],
+  "diabetes_medication": [
+    [
+      "diabetic_retinopathy",
+      0.55
+    ]
+  ],
+  "thyroid_medication": [
+    [
+      "thyroid_disorder",
+      0.65
+    ],
+    [
+      "hyperthyroidism",
+      0.45
+    ]
+  ],
+  "family_history_tb": [
+    [
+      "tuberculosis",
+      0.5
+    ]
+  ],
+  "family_thyroid": [
+    [
+      "thyroid_disorder",
+      0.4
+    ],
+    [
+      "hyperthyroidism",
+      0.35
+    ]
+  ],
+  "family_cancer": [
+    [
+      "leukemia",
+      0.2
+    ]
+  ],
+  "asthma_history": [
+    [
+      "bronchial_asthma",
+      0.7
+    ]
+  ],
+  "tb_history": [
+    [
+      "tuberculosis",
+      0.55
+    ]
+  ],
+  "thyroid_history": [
+    [
+      "thyroid_disorder",
+      0.6
+    ],
+    [
+      "hyperthyroidism",
+      0.45
+    ]
+  ],
+  "surgery_history": [
+    [
+      "appendicitis",
+      0.1
     ]
   ]
 }
