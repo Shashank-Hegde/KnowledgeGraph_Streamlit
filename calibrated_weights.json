@@ -262,7 +262,11 @@
     ],
     [
       "influenza",
-      0.45
+      0.444
+    ],
+    [
+      "eczema",
+      0.15
     ]
   ],
   "chest_pain": [
@@ -317,6 +321,10 @@
     [
       "malaria",
       0.35
+    ],
+    [
+      "eczema",
+      0.15
     ]
   ],
   "blurred_vision": [
@@ -384,10 +392,14 @@
     ],
     [
       "influenza",
-      0.4
+      0.394
     ],
     [
       "COPD",
+      0.15
+    ],
+    [
+      "eczema",
       0.15
     ]
   ],
@@ -410,7 +422,7 @@
     ],
     [
       "influenza",
-      0.65
+      0.644
     ],
     [
       "pneumonia",
@@ -427,6 +439,10 @@
     [
       "URI",
       0.45
+    ],
+    [
+      "eczema",
+      0.15
     ]
   ],
   "chills": [
@@ -466,11 +482,15 @@
     ],
     [
       "influenza",
-      0.45
+      0.444
     ],
     [
       "viral_fever",
       0.4
+    ],
+    [
+      "eczema",
+      0.15
     ]
   ],
   "body_pain": [
@@ -488,11 +508,15 @@
     ],
     [
       "influenza",
-      0.6
+      0.594
     ],
     [
       "typhoid",
       0.4
+    ],
+    [
+      "eczema",
+      0.15
     ]
   ],
   "fatigue": [
@@ -631,6 +655,10 @@
     [
       "COPD",
       0.52
+    ],
+    [
+      "eczema",
+      0.15
     ]
   ],
   "nocturnal_dyspnea": [
