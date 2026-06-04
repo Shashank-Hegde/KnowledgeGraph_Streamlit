@@ -1173,5 +1173,87 @@
         "parse_method": "fast"
       }
     ]
+  },
+  {
+    "timestamp": "2026-06-04 10:23:56",
+    "feedback": {
+      "type": "correct",
+      "correct": "COPD",
+      "wrong": "pneumonia",
+      "num_changes": 9
+    },
+    "active_symptoms": [
+      "cough",
+      "cough_type",
+      "dry_cough",
+      "hemoptysis",
+      "productive_cough",
+      "sore_throat"
+    ],
+    "denied_symptoms": [
+      "asthma_symptoms",
+      "chest_pain",
+      "cold",
+      "lymphadenopathy",
+      "night_sweats",
+      "smoking_history",
+      "weight_loss"
+    ],
+    "questions_asked": [
+      {
+        "id": "Q108",
+        "text": "Is the cough dry or producing mucus/phlegm?",
+        "response": "sometimes it is dry, else it phlegm",
+        "parse_method": "llm"
+      },
+      {
+        "id": "Q022",
+        "text": "Is your nose blocked or runny?",
+        "response": "",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q020",
+        "text": "Do you smoke or have you ever smoked regularly?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q018",
+        "text": "Have you coughed up blood or blood-streaked mucus?",
+        "response": "yes",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q086",
+        "text": "Have you noticed swollen lymph nodes (lumps in neck, armpit, or groin)?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q031",
+        "text": "Have you had any unintentional weight loss in recent weeks?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q015",
+        "text": "Do you feel short of breath or difficulty breathing?",
+        "response": "",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q010",
+        "text": "Have you been experiencing night sweats?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q019",
+        "text": "Do you have chest pain when coughing or breathing deeply?",
+        "response": "no",
+        "parse_method": "fast"
+      }
+    ]
   }
 ]
