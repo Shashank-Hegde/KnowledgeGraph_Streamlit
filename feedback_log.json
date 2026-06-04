@@ -1095,5 +1095,83 @@
         "parse_method": "fast"
       }
     ]
+  },
+  {
+    "timestamp": "2026-06-04 09:59:15",
+    "feedback": {
+      "type": "rerank",
+      "correct": "dengue",
+      "num_changes": 4
+    },
+    "active_symptoms": [
+      "appetite_loss",
+      "body_pain",
+      "chills",
+      "fever",
+      "headache",
+      "nausea"
+    ],
+    "denied_symptoms": [
+      "contact_history",
+      "cough",
+      "rash",
+      "travel_history"
+    ],
+    "questions_asked": [
+      {
+        "id": "Q004",
+        "text": "Are you experiencing body pain or muscle aches?",
+        "response": "sometimes",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q006",
+        "text": "Do you have a headache? If yes, where exactly?",
+        "response": "yeah it is on the sides",
+        "parse_method": "llm"
+      },
+      {
+        "id": "Q007",
+        "text": "Have you traveled to a different region in the last 2 weeks?",
+        "response": "not really",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q003",
+        "text": "Do you have chills or shivering along with the fever?",
+        "response": "yes it is there",
+        "parse_method": "llm"
+      },
+      {
+        "id": "Q002",
+        "text": "Is the fever continuous, or does it come and go?",
+        "response": "continuous",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q008",
+        "text": "Is anyone else at home or work also sick with similar symptoms?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q030",
+        "text": "Have you lost your appetite recently?",
+        "response": "ha ji",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q009",
+        "text": "Do you have a cough along with the fever?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q005",
+        "text": "Have you noticed any rash or red spots on your skin?",
+        "response": "no",
+        "parse_method": "fast"
+      }
+    ]
   }
 ]
