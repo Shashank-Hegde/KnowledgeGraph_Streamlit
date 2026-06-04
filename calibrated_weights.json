@@ -246,11 +246,11 @@
     ],
     [
       "COPD",
-      0.45
+      0.47
     ],
     [
       "pneumonia",
-      0.55
+      0.54
     ],
     [
       "tuberculosis",
@@ -385,6 +385,10 @@
     [
       "influenza",
       0.4
+    ],
+    [
+      "COPD",
+      0.15
     ]
   ],
   "fever": [
@@ -609,12 +613,16 @@
     [
       "bronchial_asthma",
       0.5
+    ],
+    [
+      "COPD",
+      0.15
     ]
   ],
   "productive_cough": [
     [
       "pneumonia",
-      0.6
+      0.59
     ],
     [
       "tuberculosis",
@@ -622,7 +630,7 @@
     ],
     [
       "COPD",
-      0.5
+      0.52
     ]
   ],
   "nocturnal_dyspnea": [
@@ -638,11 +646,15 @@
     ],
     [
       "pneumonia",
-      0.4
+      0.39
     ],
     [
       "leukemia",
       0.3
+    ],
+    [
+      "COPD",
+      0.15
     ]
   ],
   "smoking_history": [
