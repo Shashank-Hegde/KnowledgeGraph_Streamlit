@@ -231,11 +231,50 @@ def render_sidebar(graph, llm, gh):
     with st.sidebar:
         st.markdown("### 🏥 System Status")
 
-        # LLM status
-        if llm.is_available():
+        # LLM status — with debug details
+        llm_ok = llm.is_available()
+        if llm_ok:
             st.success("✅ LLM: Online (%s)" % llm.model)
         else:
             st.warning("⚠️ LLM: Offline (using fast parser)")
+
+        # Debug expander — always visible so we can diagnose
+        with st.expander("🔍 LLM Debug", expanded=not llm_ok):
+            st.caption("URL: `%s`" % llm.url)
+            st.caption("Model: `%s`" % llm.model)
+            st.caption("Auth user: `%s`" % (llm.auth[0] if llm.auth else "None"))
+            st.caption("Auth password: `%s`" % ("*" * len(llm.auth[1]) if llm.auth else "None"))
+
+            if st.button("Test Connection Now", key="test_llm"):
+                test_url = llm.url.replace("/api/generate", "/api/tags")
+                st.caption("Testing: `%s`" % test_url)
+                try:
+                    import requests as req
+                    resp = req.get(
+                        test_url,
+                        auth=llm.auth,
+                        headers=llm.headers,
+                        timeout=8,
+                    )
+                    st.caption("HTTP Status: `%d`" % resp.status_code)
+                    if resp.status_code == 200:
+                        st.success("Connection OK!")
+                        try:
+                            data = resp.json()
+                            models = [m.get("name") for m in data.get("models", [])]
+                            st.caption("Models: %s" % models)
+                        except Exception:
+                            st.caption("Response (raw): `%s`" % resp.text[:200])
+                    elif resp.status_code == 401:
+                        st.error("❌ 401 Unauthorized — wrong password in Streamlit secrets")
+                        st.caption("Response: `%s`" % resp.text[:300])
+                    elif resp.status_code == 403:
+                        st.error("❌ 403 Forbidden — auth rejected")
+                    else:
+                        st.warning("Unexpected status %d" % resp.status_code)
+                        st.caption("Response: `%s`" % resp.text[:300])
+                except Exception as e:
+                    st.error("Connection error: `%s`" % str(e))
 
         # GitHub status
         if gh and gh.is_configured():
@@ -358,7 +397,10 @@ def render_doctor_review(spreader, graph, gh, questions_log):
         if st.button("Submit Confirmation", type="primary"):
             feedback = _apply_confirm(spreader, graph, top[0][0], conf_val)
             ok, msg = _push_feedback(feedback, spreader, graph, gh, questions_log)
-            st.success(msg) if ok else st.warning(msg)
+            if ok:
+                st.success(msg)
+            else:
+                st.warning(msg)
             render_weight_changes(feedback)
 
     elif "Correct" in feedback_type:
@@ -383,7 +425,10 @@ def render_doctor_review(spreader, graph, gh, questions_log):
             correct_cond = options[selected]
             feedback = _apply_correct(spreader, graph, correct_cond, top[0][0], conf_val)
             ok, msg = _push_feedback(feedback, spreader, graph, gh, questions_log)
-            st.success(msg) if ok else st.warning(msg)
+            if ok:
+                st.success(msg)
+            else:
+                st.warning(msg)
             render_weight_changes(feedback)
 
     elif "Rerank" in feedback_type:
@@ -398,7 +443,10 @@ def render_doctor_review(spreader, graph, gh, questions_log):
             correct_cond = rerank_options[selected]
             feedback = _apply_rerank(spreader, graph, correct_cond)
             ok, msg = _push_feedback(feedback, spreader, graph, gh, questions_log)
-            st.success(msg) if ok else st.warning(msg)
+            if ok:
+                st.success(msg)
+            else:
+                st.warning(msg)
             render_weight_changes(feedback)
 
 
