@@ -1,0 +1,1070 @@
+[
+  {
+    "timestamp": "2026-05-28 17:51:20",
+    "session_id": "S1779970850558",
+    "session": {
+      "session_id": "S1779970850558",
+      "timestamp": "2026-05-28 17:50:50",
+      "patient": {
+        "age": 79,
+        "gender": "female"
+      },
+      "initial_symptoms": [
+        "asthma_symptoms"
+      ],
+      "confirmed_symptoms": [
+        "acidity",
+        "asthma_symptoms",
+        "nsaid_use"
+      ],
+      "denied_symptoms": [
+        "alcohol_use",
+        "bloating",
+        "blood_in_stool",
+        "family_atopy",
+        "nocturnal_dyspnea",
+        "postprandial_burn"
+      ],
+      "questions_asked": [
+        {
+          "id": "Q014",
+          "text": "How long have you had the cough?",
+          "response": "4 days"
+        },
+        {
+          "id": "Q091",
+          "text": "Do you have a family history of allergies or asthma?",
+          "response": "no"
+        },
+        {
+          "id": "Q017",
+          "text": "Does the breathlessness worsen at night or early morning?",
+          "response": "no"
+        },
+        {
+          "id": "Q023",
+          "text": "Do you feel a burning sensation in your chest or upper stomach?",
+          "response": "yes"
+        },
+        {
+          "id": "Q032",
+          "text": "Do you frequently use painkillers like ibuprofen or aspirin?",
+          "response": "yes"
+        },
+        {
+          "id": "Q025",
+          "text": "Do you feel bloated or excessively full after meals?",
+          "response": "no"
+        },
+        {
+          "id": "Q033",
+          "text": "Do you consume alcohol regularly?",
+          "response": "no"
+        },
+        {
+          "id": "Q024",
+          "text": "Does the burning feeling get worse after eating or when lying down?",
+          "response": "no"
+        },
+        {
+          "id": "Q027",
+          "text": "Have you noticed blood or dark color in your stool?",
+          "response": "no"
+        }
+      ],
+      "top_conditions": [
+        [
+          "peptic_ulcer",
+          0.0478
+        ],
+        [
+          "GERD",
+          0.0466
+        ],
+        [
+          "bronchial_asthma",
+          0.0317
+        ],
+        [
+          "COPD",
+          0.0306
+        ],
+        [
+          "IBS",
+          0.0203
+        ]
+      ],
+      "metadata": {
+        "cough_duration": "4 day"
+      }
+    },
+    "feedback": {
+      "type": "rerank",
+      "correct_condition": "bronchial_asthma",
+      "original_rank": 3,
+      "session_id": "S1779970850558",
+      "confidence": 0.6
+    },
+    "weight_changes": {
+      "type": "rerank",
+      "correct_condition": "bronchial_asthma",
+      "num_changes": 1,
+      "changes": [
+        {
+          "symptom": "asthma_symptoms",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.85,
+          "new_weight": 0.856,
+          "delta": 0.006,
+          "action": "reinforce"
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-05-28 17:55:50",
+    "session_id": "S1779971108311",
+    "session": {
+      "session_id": "S1779971108311",
+      "timestamp": "2026-05-28 17:55:08",
+      "patient": {
+        "age": 78,
+        "gender": "female"
+      },
+      "initial_symptoms": [
+        "asthma_symptoms"
+      ],
+      "confirmed_symptoms": [
+        "acidity",
+        "asthma_symptoms",
+        "bloating",
+        "nsaid_use"
+      ],
+      "denied_symptoms": [
+        "alcohol_use",
+        "blood_in_stool",
+        "family_atopy",
+        "nocturnal_dyspnea",
+        "postprandial_burn"
+      ],
+      "questions_asked": [
+        {
+          "id": "Q014",
+          "text": "How long have you had the cough?",
+          "response": "9 days"
+        },
+        {
+          "id": "Q091",
+          "text": "Do you have a family history of allergies or asthma?",
+          "response": "no"
+        },
+        {
+          "id": "Q017",
+          "text": "Does the breathlessness worsen at night or early morning?",
+          "response": "no"
+        },
+        {
+          "id": "Q023",
+          "text": "Do you feel a burning sensation in your chest or upper stomach?",
+          "response": "yes"
+        },
+        {
+          "id": "Q032",
+          "text": "Do you frequently use painkillers like ibuprofen or aspirin?",
+          "response": "yes"
+        },
+        {
+          "id": "Q025",
+          "text": "Do you feel bloated or excessively full after meals?",
+          "response": "yes"
+        },
+        {
+          "id": "Q024",
+          "text": "Does the burning feeling get worse after eating or when lying down?",
+          "response": "no"
+        },
+        {
+          "id": "Q027",
+          "text": "Have you noticed blood or dark color in your stool?",
+          "response": "no"
+        },
+        {
+          "id": "Q033",
+          "text": "Do you consume alcohol regularly?",
+          "response": "no"
+        }
+      ],
+      "top_conditions": [
+        [
+          "GERD",
+          0.0733
+        ],
+        [
+          "IBS",
+          0.0472
+        ],
+        [
+          "peptic_ulcer",
+          0.0447
+        ],
+        [
+          "bronchial_asthma",
+          0.0296
+        ],
+        [
+          "COPD",
+          0.0286
+        ]
+      ],
+      "metadata": {
+        "cough_duration": "9 day"
+      }
+    },
+    "feedback": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "engine_top_condition": "GERD",
+      "confidence": 1.0,
+      "session_id": "S1779971108311"
+    },
+    "weight_changes": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "num_changes": 7,
+      "changes": [
+        {
+          "symptom": "acidity",
+          "condition": "GERD",
+          "old_weight": 0.85,
+          "new_weight": 0.84,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "acidity",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        },
+        {
+          "symptom": "asthma_symptoms",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.85,
+          "new_weight": 0.87,
+          "delta": 0.02,
+          "action": "strengthen"
+        },
+        {
+          "symptom": "bloating",
+          "condition": "GERD",
+          "old_weight": 0.4,
+          "new_weight": 0.39,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "bloating",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "GERD",
+          "old_weight": 0.4,
+          "new_weight": 0.39,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-05-28 17:57:30",
+    "session_id": "S1779971228764",
+    "session": {
+      "session_id": "S1779971228764",
+      "timestamp": "2026-05-28 17:57:08",
+      "patient": {
+        "age": 74,
+        "gender": "female"
+      },
+      "initial_symptoms": [
+        "asthma_symptoms"
+      ],
+      "confirmed_symptoms": [
+        "acidity",
+        "asthma_symptoms",
+        "nsaid_use"
+      ],
+      "denied_symptoms": [
+        "alcohol_use",
+        "bloating",
+        "blood_in_stool",
+        "family_atopy",
+        "nocturnal_dyspnea",
+        "postprandial_burn"
+      ],
+      "questions_asked": [
+        {
+          "id": "Q014",
+          "text": "How long have you had the cough?",
+          "response": "9 days"
+        },
+        {
+          "id": "Q091",
+          "text": "Do you have a family history of allergies or asthma?",
+          "response": "no"
+        },
+        {
+          "id": "Q017",
+          "text": "Does the breathlessness worsen at night or early morning?",
+          "response": "no"
+        },
+        {
+          "id": "Q023",
+          "text": "Do you feel a burning sensation in your chest or upper stomach?",
+          "response": "yes"
+        },
+        {
+          "id": "Q032",
+          "text": "Do you frequently use painkillers like ibuprofen or aspirin?",
+          "response": "yes"
+        },
+        {
+          "id": "Q025",
+          "text": "Do you feel bloated or excessively full after meals?",
+          "response": "no"
+        },
+        {
+          "id": "Q033",
+          "text": "Do you consume alcohol regularly?",
+          "response": "no"
+        },
+        {
+          "id": "Q024",
+          "text": "Does the burning feeling get worse after eating or when lying down?",
+          "response": "no"
+        },
+        {
+          "id": "Q027",
+          "text": "Have you noticed blood or dark color in your stool?",
+          "response": "no"
+        }
+      ],
+      "top_conditions": [
+        [
+          "peptic_ulcer",
+          0.0478
+        ],
+        [
+          "GERD",
+          0.0466
+        ],
+        [
+          "bronchial_asthma",
+          0.0317
+        ],
+        [
+          "COPD",
+          0.0306
+        ],
+        [
+          "IBS",
+          0.0203
+        ]
+      ],
+      "metadata": {
+        "cough_duration": "9 day"
+      }
+    },
+    "feedback": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "engine_top_condition": "peptic_ulcer",
+      "confidence": 1.0,
+      "session_id": "S1779971228764"
+    },
+    "weight_changes": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "num_changes": 5,
+      "changes": [
+        {
+          "symptom": "acidity",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "acidity",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        },
+        {
+          "symptom": "asthma_symptoms",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.85,
+          "new_weight": 0.87,
+          "delta": 0.02,
+          "action": "strengthen"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-05-28 17:58:15",
+    "session_id": "S1779971278259",
+    "session": {
+      "session_id": "S1779971278259",
+      "timestamp": "2026-05-28 17:57:58",
+      "patient": {
+        "age": 78,
+        "gender": "female"
+      },
+      "initial_symptoms": [
+        "asthma_symptoms"
+      ],
+      "confirmed_symptoms": [
+        "acidity",
+        "asthma_symptoms",
+        "nsaid_use"
+      ],
+      "denied_symptoms": [
+        "alcohol_use",
+        "bloating",
+        "blood_in_stool",
+        "family_atopy",
+        "nocturnal_dyspnea",
+        "postprandial_burn"
+      ],
+      "questions_asked": [
+        {
+          "id": "Q014",
+          "text": "How long have you had the cough?",
+          "response": "day"
+        },
+        {
+          "id": "Q091",
+          "text": "Do you have a family history of allergies or asthma?",
+          "response": "no"
+        },
+        {
+          "id": "Q017",
+          "text": "Does the breathlessness worsen at night or early morning?",
+          "response": "no"
+        },
+        {
+          "id": "Q023",
+          "text": "Do you feel a burning sensation in your chest or upper stomach?",
+          "response": "yes"
+        },
+        {
+          "id": "Q032",
+          "text": "Do you frequently use painkillers like ibuprofen or aspirin?",
+          "response": "yes"
+        },
+        {
+          "id": "Q025",
+          "text": "Do you feel bloated or excessively full after meals?",
+          "response": "no"
+        },
+        {
+          "id": "Q033",
+          "text": "Do you consume alcohol regularly?",
+          "response": "no"
+        },
+        {
+          "id": "Q024",
+          "text": "Does the burning feeling get worse after eating or when lying down?",
+          "response": "no"
+        },
+        {
+          "id": "Q027",
+          "text": "Have you noticed blood or dark color in your stool?",
+          "response": "no"
+        }
+      ],
+      "top_conditions": [
+        [
+          "peptic_ulcer",
+          0.0478
+        ],
+        [
+          "GERD",
+          0.0466
+        ],
+        [
+          "bronchial_asthma",
+          0.0317
+        ],
+        [
+          "COPD",
+          0.0306
+        ],
+        [
+          "IBS",
+          0.0203
+        ]
+      ],
+      "metadata": {}
+    },
+    "feedback": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "engine_top_condition": "peptic_ulcer",
+      "confidence": 1.0,
+      "session_id": "S1779971278259"
+    },
+    "weight_changes": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "num_changes": 5,
+      "changes": [
+        {
+          "symptom": "acidity",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "acidity",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        },
+        {
+          "symptom": "asthma_symptoms",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.85,
+          "new_weight": 0.87,
+          "delta": 0.02,
+          "action": "strengthen"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-05-28 17:59:15",
+    "session_id": "S1779971343049",
+    "session": {
+      "session_id": "S1779971343049",
+      "timestamp": "2026-05-28 17:59:03",
+      "patient": {
+        "age": 74,
+        "gender": "female"
+      },
+      "initial_symptoms": [
+        "asthma_symptoms"
+      ],
+      "confirmed_symptoms": [
+        "acidity",
+        "asthma_symptoms",
+        "nsaid_use"
+      ],
+      "denied_symptoms": [
+        "alcohol_use",
+        "bloating",
+        "blood_in_stool",
+        "family_atopy",
+        "nocturnal_dyspnea",
+        "postprandial_burn"
+      ],
+      "questions_asked": [
+        {
+          "id": "Q014",
+          "text": "How long have you had the cough?",
+          "response": "9 day"
+        },
+        {
+          "id": "Q091",
+          "text": "Do you have a family history of allergies or asthma?",
+          "response": "no"
+        },
+        {
+          "id": "Q017",
+          "text": "Does the breathlessness worsen at night or early morning?",
+          "response": "no"
+        },
+        {
+          "id": "Q023",
+          "text": "Do you feel a burning sensation in your chest or upper stomach?",
+          "response": "yes"
+        },
+        {
+          "id": "Q032",
+          "text": "Do you frequently use painkillers like ibuprofen or aspirin?",
+          "response": "yes"
+        },
+        {
+          "id": "Q025",
+          "text": "Do you feel bloated or excessively full after meals?",
+          "response": "no"
+        },
+        {
+          "id": "Q033",
+          "text": "Do you consume alcohol regularly?",
+          "response": "no"
+        },
+        {
+          "id": "Q024",
+          "text": "Does the burning feeling get worse after eating or when lying down?",
+          "response": "no"
+        },
+        {
+          "id": "Q027",
+          "text": "Have you noticed blood or dark color in your stool?",
+          "response": "no"
+        }
+      ],
+      "top_conditions": [
+        [
+          "peptic_ulcer",
+          0.0478
+        ],
+        [
+          "GERD",
+          0.0466
+        ],
+        [
+          "bronchial_asthma",
+          0.0317
+        ],
+        [
+          "COPD",
+          0.0306
+        ],
+        [
+          "IBS",
+          0.0203
+        ]
+      ],
+      "metadata": {
+        "cough_duration": "9 day"
+      }
+    },
+    "feedback": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "engine_top_condition": "peptic_ulcer",
+      "confidence": 1.0,
+      "session_id": "S1779971343049"
+    },
+    "weight_changes": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "num_changes": 5,
+      "changes": [
+        {
+          "symptom": "acidity",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "acidity",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        },
+        {
+          "symptom": "asthma_symptoms",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.85,
+          "new_weight": 0.87,
+          "delta": 0.02,
+          "action": "strengthen"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-05-28 18:06:29",
+    "session_id": "S1779971779742",
+    "session": {
+      "session_id": "S1779971779742",
+      "timestamp": "2026-05-28 18:06:19",
+      "patient": {
+        "age": 84,
+        "gender": "female"
+      },
+      "initial_symptoms": [
+        "asthma_symptoms"
+      ],
+      "confirmed_symptoms": [
+        "acidity",
+        "asthma_symptoms",
+        "nsaid_use"
+      ],
+      "denied_symptoms": [
+        "alcohol_use",
+        "bloating",
+        "blood_in_stool",
+        "family_atopy",
+        "nocturnal_dyspnea",
+        "postprandial_burn"
+      ],
+      "questions_asked": [
+        {
+          "id": "Q014",
+          "text": "How long have you had the cough?",
+          "response": "9 days"
+        },
+        {
+          "id": "Q091",
+          "text": "Do you have a family history of allergies or asthma?",
+          "response": "no"
+        },
+        {
+          "id": "Q017",
+          "text": "Does the breathlessness worsen at night or early morning?",
+          "response": "no"
+        },
+        {
+          "id": "Q023",
+          "text": "Do you feel a burning sensation in your chest or upper stomach?",
+          "response": "yes"
+        },
+        {
+          "id": "Q032",
+          "text": "Do you frequently use painkillers like ibuprofen or aspirin?",
+          "response": "yes"
+        },
+        {
+          "id": "Q025",
+          "text": "Do you feel bloated or excessively full after meals?",
+          "response": "no"
+        },
+        {
+          "id": "Q033",
+          "text": "Do you consume alcohol regularly?",
+          "response": "no"
+        },
+        {
+          "id": "Q024",
+          "text": "Does the burning feeling get worse after eating or when lying down?",
+          "response": "no"
+        },
+        {
+          "id": "Q027",
+          "text": "Have you noticed blood or dark color in your stool?",
+          "response": "no"
+        }
+      ],
+      "top_conditions": [
+        [
+          "peptic_ulcer",
+          0.0478
+        ],
+        [
+          "GERD",
+          0.0466
+        ],
+        [
+          "bronchial_asthma",
+          0.0317
+        ],
+        [
+          "COPD",
+          0.0306
+        ],
+        [
+          "IBS",
+          0.0203
+        ]
+      ],
+      "metadata": {
+        "cough_duration": "9 day"
+      }
+    },
+    "feedback": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "engine_top_condition": "peptic_ulcer",
+      "confidence": 1.0,
+      "session_id": "S1779971779742"
+    },
+    "weight_changes": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "num_changes": 5,
+      "changes": [
+        {
+          "symptom": "acidity",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "acidity",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        },
+        {
+          "symptom": "asthma_symptoms",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.85,
+          "new_weight": 0.87,
+          "delta": 0.02,
+          "action": "strengthen"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "peptic_ulcer",
+          "old_weight": 0.6,
+          "new_weight": 0.59,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        }
+      ]
+    }
+  },
+  {
+    "timestamp": "2026-05-28 18:07:41",
+    "session_id": "S1779971851925",
+    "session": {
+      "session_id": "S1779971851925",
+      "timestamp": "2026-05-28 18:07:31",
+      "patient": {
+        "age": 82,
+        "gender": "female"
+      },
+      "initial_symptoms": [
+        "asthma_symptoms"
+      ],
+      "confirmed_symptoms": [
+        "acidity",
+        "anxiety",
+        "asthma_symptoms",
+        "nsaid_use"
+      ],
+      "denied_symptoms": [
+        "family_atopy",
+        "insomnia",
+        "nocturnal_dyspnea",
+        "palpitations",
+        "tremor"
+      ],
+      "questions_asked": [
+        {
+          "id": "Q014",
+          "text": "How long have you had the cough?",
+          "response": "9 day"
+        },
+        {
+          "id": "Q091",
+          "text": "Do you have a family history of allergies or asthma?",
+          "response": "no"
+        },
+        {
+          "id": "Q017",
+          "text": "Does the breathlessness worsen at night or early morning?",
+          "response": "no"
+        },
+        {
+          "id": "Q071",
+          "text": "Do you often feel excessively worried or on edge?",
+          "response": "yes"
+        },
+        {
+          "id": "Q072",
+          "text": "Do you have difficulty sleeping or staying asleep?",
+          "response": "no"
+        },
+        {
+          "id": "Q050",
+          "text": "Do you feel your heart beating fast, irregularly, or skipping beats?",
+          "response": "no"
+        },
+        {
+          "id": "Q075",
+          "text": "Do you feel your hands trembling or shaking?",
+          "response": "no"
+        },
+        {
+          "id": "Q023",
+          "text": "Do you feel a burning sensation in your chest or upper stomach?",
+          "response": "yes"
+        },
+        {
+          "id": "Q032",
+          "text": "Do you frequently use painkillers like ibuprofen or aspirin?",
+          "response": "yes"
+        }
+      ],
+      "top_conditions": [
+        [
+          "GERD",
+          0.0603
+        ],
+        [
+          "peptic_ulcer",
+          0.0562
+        ],
+        [
+          "bronchial_asthma",
+          0.0406
+        ],
+        [
+          "GAD",
+          0.0331
+        ],
+        [
+          "COPD",
+          0.0285
+        ]
+      ],
+      "metadata": {
+        "cough_duration": "9 day"
+      }
+    },
+    "feedback": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "engine_top_condition": "GERD",
+      "confidence": 1.0,
+      "session_id": "S1779971851925"
+    },
+    "weight_changes": {
+      "type": "correct",
+      "correct_condition": "bronchial_asthma",
+      "num_changes": 6,
+      "changes": [
+        {
+          "symptom": "acidity",
+          "condition": "GERD",
+          "old_weight": 0.85,
+          "new_weight": 0.84,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "acidity",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.15,
+          "new_weight": 0.17,
+          "delta": 0.02,
+          "action": "strengthen"
+        },
+        {
+          "symptom": "anxiety",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.0,
+          "new_weight": 0.15,
+          "delta": 0.15,
+          "action": "create_new_edge"
+        },
+        {
+          "symptom": "asthma_symptoms",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.87,
+          "new_weight": 0.89,
+          "delta": 0.02,
+          "action": "strengthen"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "GERD",
+          "old_weight": 0.4,
+          "new_weight": 0.39,
+          "delta": -0.01,
+          "action": "weaken"
+        },
+        {
+          "symptom": "nsaid_use",
+          "condition": "bronchial_asthma",
+          "old_weight": 0.15,
+          "new_weight": 0.17,
+          "delta": 0.02,
+          "action": "strengthen"
+        }
+      ]
+    }
+  }
+]
