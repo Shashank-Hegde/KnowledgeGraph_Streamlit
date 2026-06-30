@@ -1334,5 +1334,43 @@
         "parse_method": "fast"
       }
     ]
+  },
+  {
+    "timestamp": "2026-06-30 13:36:04",
+    "feedback": {
+      "type": "correct",
+      "correct": "IBD",
+      "wrong": "dengue",
+      "num_changes": 4
+    },
+    "active_symptoms": [
+      "body_pain",
+      "fever"
+    ],
+    "denied_symptoms": [
+      "chills",
+      "contact_history",
+      "headache"
+    ],
+    "questions_asked": [
+      {
+        "id": "Q003",
+        "text": "Do you have chills or shivering along with the fever?",
+        "response": "no",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q006",
+        "text": "Do you have a headache? If yes, where exactly?",
+        "response": "no sir",
+        "parse_method": "fast"
+      },
+      {
+        "id": "Q008",
+        "text": "Is anyone else at home or work also sick with similar symptoms?",
+        "response": "no",
+        "parse_method": "fast"
+      }
+    ]
   }
 ]
